@@ -54,7 +54,7 @@ class QRadarSession:
                 "Provide either 'sec_token' or both 'username' and 'password'."
             )
 
-        scheme = "https"
+        scheme = "http"
         base = host.rstrip("/")
         if not base.startswith(("http://", "https://")):
             base = f"{scheme}://{base}"

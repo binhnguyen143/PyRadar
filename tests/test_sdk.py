@@ -66,10 +66,10 @@ class TestQRadarSessionAuth:
 
 @rsps_lib.activate
 def test_get_request_parses_json():
-    rsps_lib.add(rsps_lib.GET, f"{BASE_URL}/siem/offenses", params={"filter": {"id": 1}}, status=200)
+    rsps_lib.add(rsps_lib.GET, f"{BASE_URL}/system/about", json={"build_version": "7.5.0"}, status=200)
     session = QRadarSession(host="10.155.170.100", sec_token=SEC_TOKEN, verify_ssl=False)
-    result = session.get("/siem/offenses")
-    assert result == [{"id": 1}]
+    result = session.get("/system/about")
+    assert result == {"build_version": "7.5.0"}
     session.close()
 
 
@@ -78,12 +78,12 @@ def test_post_request_sends_json_body():
     rsps_lib.add(
         rsps_lib.POST,
         f"{BASE_URL}/ariel/searches",
-        json={"search_id": "abc123", "status": "EXECUTE"},
+        json={"search_id": "2889", "status": "EXECUTE"},
         status=201,
     )
     session = QRadarSession(host="10.155.170.100", sec_token=SEC_TOKEN, verify_ssl=False)
     result = session.post("/ariel/searches", json_body={"query_expression": "SELECT * FROM events"})
-    assert result["search_id"] == "abc123"
+    assert result["search_id"] == "2889"
     session.close()
 
 
@@ -116,11 +116,11 @@ def test_filter_added_to_query_params():
 
 @rsps_lib.activate
 def test_404_raises_not_found():
-    rsps_lib.add(rsps_lib.GET, f"{BASE_URL}/siem/offenses/9999",
+    rsps_lib.add(rsps_lib.GET, f"{BASE_URL}/siem/offenses/99999",
                  json={"message": "Offense not found"}, status=404)
     session = QRadarSession(host="10.155.170.100", sec_token=SEC_TOKEN, verify_ssl=False)
     with pytest.raises(QRadarNotFoundError) as exc_info:
-        session.get("/siem/offenses/9999")
+        session.get("/siem/offenses/99999")
     assert exc_info.value.status_code == 404
     session.close()
 
