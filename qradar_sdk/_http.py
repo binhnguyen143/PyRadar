@@ -26,13 +26,14 @@ from urllib.parse import urljoin
 
 import requests
 from requests.adapters import HTTPAdapter
+import urllib3
 from urllib3.util.retry import Retry
 
 from .exceptions import QRadarAPIError, QRadarAuthError, QRadarNotFoundError, QRadarRateLimitError
 
 _DEFAULT_VERSION = "26.0"
 _DEFAULT_TIMEOUT = 30
-
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning) 
 
 class QRadarSession:
     """Manages an HTTP session to a QRadar console."""
@@ -54,7 +55,7 @@ class QRadarSession:
                 "Provide either 'sec_token' or both 'username' and 'password'."
             )
 
-        scheme = "http"
+        scheme = "https"
         base = host.rstrip("/")
         if not base.startswith(("http://", "https://")):
             base = f"{scheme}://{base}"

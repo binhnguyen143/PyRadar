@@ -73,3 +73,4 @@ dmypy.json
 *.pyc
 .python-version
 requirements-dev.txt
+use_cases/ 

@@ -15,6 +15,10 @@ Quick start::
 
 from .client import QRadarClient
 from ._http import QRadarSession
+from .filter import (
+    FilterExpression,
+    FilterOperator,
+)
 from .exceptions import (
     QRadarError,
     QRadarAPIError,
@@ -57,6 +61,8 @@ __all__ = [
     "QRadarAuthError",
     "QRadarNotFoundError",
     "QRadarRateLimitError",
+    "FilterExpression",
+    "FilterOperator",
     "AccessAPI", "AnalyticsAPI", "ArielAPI", "AssetModelAPI", "AuthAPI", "BackupAndRestoreAPI", "BandwidthManagerAPI", "ConfigAPI", "DataClassificationAPI", "DisasterRecoveryAPI", "DynamicSearchAPI", "ForensicsAPI", "GuiAppFrameworkAPI", "HealthAPI", "HealthDataAPI", "HelpAPI", "QniAPI", "QrmAPI", "QvmAPI", "ReferenceDataAPI", "ReferenceDataCollectionsAPI", "ScannerAPI", "ServicesAPI", "SiemAPI", "StagedConfigAPI", "SystemAPI",
 ]
 

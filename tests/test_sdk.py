@@ -8,7 +8,7 @@ from qradar_sdk._http import QRadarSession
 from qradar_sdk.exceptions import QRadarRateLimitError
 
 
-BASE_URL = "http://10.155.170.100/api"
+BASE_URL = "https://10.155.170.100/api"
 SEC_TOKEN = "81780336-1ce5-4ca4-9160-bbfabe37e319"
 
 
