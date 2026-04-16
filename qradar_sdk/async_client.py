@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import asyncio
 from functools import partial
-from typing import Any, Dict
+from typing import Any
 
 from .client import QRadarClient
 
@@ -14,7 +14,7 @@ class _AsyncProxy:  # pylint: disable=too-few-public-methods
 
     def __init__(self, target: Any) -> None:
         self._target = target
-        self._cache: Dict[str, Any] = {}
+        self._cache: dict[str, Any] = {}
 
     def __getattr__(self, name: str) -> Any:
         if name in self._cache:

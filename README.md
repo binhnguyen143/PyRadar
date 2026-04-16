@@ -59,7 +59,7 @@ from qradar_sdk import AsyncQRadarClient
 
 async def main() -> None:
     async with AsyncQRadarClient(host="qradar.example.com", sec_token="token") as client:
-        offenses = await client.siem.get_siem_offenses(filter="status=OPEN")
+        offenses = await client.siem.get_siem_offenses()
         print(f"Found {len(offenses)} open offenses")
 
 
