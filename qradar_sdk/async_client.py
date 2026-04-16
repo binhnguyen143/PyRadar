@@ -9,7 +9,7 @@ from typing import Any, Dict
 from .client import QRadarClient
 
 
-class _AsyncProxy:
+class _AsyncProxy:  # pylint: disable=too-few-public-methods
     """Wrap SDK objects and execute callable members in a worker thread."""
 
     def __init__(self, target: Any) -> None:
