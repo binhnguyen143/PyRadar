@@ -50,6 +50,22 @@ with QRadarClient(host="qradar.example.com", sec_token="token") as client:
     offenses = client.siem.get_siem_offenses()
 ```
 
+### Async Usage (for async microservices)
+
+```python
+import asyncio
+from qradar_sdk import AsyncQRadarClient
+
+
+async def main() -> None:
+    async with AsyncQRadarClient(host="qradar.example.com", sec_token="token") as client:
+        offenses = await client.siem.get_siem_offenses(filter="status=OPEN")
+        print(f"Found {len(offenses)} open offenses")
+
+
+asyncio.run(main())
+```
+
 ## Authentication
 
 The SDK supports two authentication methods:
