@@ -29,7 +29,8 @@ class _AsyncProxy:  # pylint: disable=too-few-public-methods
             self._cache[name] = _call
             return _call
 
-        if getattr(attr.__class__, "__module__", "").startswith("qradar_sdk"):
+        module_name = getattr(attr.__class__, "__module__", None)
+        if isinstance(module_name, str) and module_name.startswith("qradar_sdk"):
             proxy = _AsyncProxy(attr)
             self._cache[name] = proxy
             return proxy
