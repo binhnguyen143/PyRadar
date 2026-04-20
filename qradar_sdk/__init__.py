@@ -14,6 +14,7 @@ Quick start::
 """
 
 from .client import QRadarClient
+from .async_client import AsyncQRadarClient
 from ._http import QRadarSession
 from .filter import (
     FilterExpression,
@@ -55,6 +56,7 @@ from .api.system import SystemAPI
 
 __all__ = [
     "QRadarClient",
+    "AsyncQRadarClient",
     "QRadarSession",
     "QRadarError",
     "QRadarAPIError",
