@@ -1,4 +1,4 @@
-"""Auto-generated QRadar API modules."""
+"""Resource-oriented QRadar API modules."""
 
 from .access import AccessAPI
 from .analytics import AnalyticsAPI

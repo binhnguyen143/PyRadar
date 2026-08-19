@@ -29,11 +29,11 @@ client = QRadarClient(
 )
 
 # Get open offenses
-offenses = client.siem.get_siem_offenses(filter="status=OPEN")
+offenses = client.siem.offenses.list(filter="status=OPEN")
 print(f"Found {len(offenses)} open offenses")
 
 # Execute an AQL search
-result = client.ariel.post_ariel_searches(
+result = client.ariel.searches.create(
     query_expression="SELECT * FROM events LAST 5 MINUTES"
 )
 search_id = result["search_id"]
@@ -47,7 +47,7 @@ client.close()
 
 ```python
 with QRadarClient(host="qradar.example.com", sec_token="token") as client:
-    offenses = client.siem.get_siem_offenses()
+    offenses = client.siem.offenses.list()
 ```
 
 ### Async Usage (for async microservices)
@@ -59,12 +59,34 @@ from qradar_sdk import AsyncQRadarClient
 
 async def main() -> None:
     async with AsyncQRadarClient(host="qradar.example.com", sec_token="token") as client:
-        offenses = await client.siem.get_siem_offenses()
+        offenses = await client.siem.offenses.list()
         print(f"Found {len(offenses)} open offenses")
 
 
 asyncio.run(main())
 ```
+
+## Resource API
+
+Endpoints are organized by their QRadar URL hierarchy. Collection and item
+operations use short, predictable names:
+
+```python
+# GET /siem/offenses
+offenses = client.siem.offenses.list(filter="status=OPEN")
+
+# GET /siem/offenses/{offense_id}
+offense = client.siem.offenses.get(offense_id)
+
+# POST /siem/offenses/{offense_id}
+updated = client.siem.offenses.update(offense_id, follow_up=True)
+
+# POST /siem/offenses/{offense_id}/notes
+note = client.siem.offenses.notes.create(offense_id, note_text="Investigating")
+```
+
+The available operation names are `list`, `get`, `create`, `update`, `delete`,
+`replace`, and `update_many`, depending on the methods supported by QRadar.
 
 ## Authentication
 
@@ -124,7 +146,8 @@ The SDK provides access to all major QRadar API endpoints organized by tags:
 
 ## Features
 
-- 729 methods covering the complete QRadar API
+- Resource-oriented access to 729 methods covering the complete QRadar API
+- Discoverable operations such as `list`, `get`, `create`, `update`, and `delete`
 - Type hints with `py.typed` marker
 - Automatic pagination support
 - Custom exceptions for different error types
@@ -172,7 +195,7 @@ from qradar_sdk import (
 )
 
 try:
-    offense = client.siem.get_siem_offenses_offense_id(offense_id=9999)
+    offense = client.siem.offenses.get(offense_id=9999)
 except QRadarNotFoundError:
     print("Offense not found")
 except QRadarAuthError:

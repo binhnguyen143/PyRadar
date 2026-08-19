@@ -10,7 +10,7 @@ Quick start::
         sec_token="<your-service-token>",
         verify_ssl=False,
     )
-    offenses = client.siem.get_siem_offenses(filter="status=OPEN")
+    offenses = client.siem.offenses.list(filter="status=OPEN")
 """
 
 from .client import QRadarClient

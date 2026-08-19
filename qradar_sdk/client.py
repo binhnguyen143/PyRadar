@@ -12,11 +12,11 @@ Usage::
     )
 
     # List open offenses
-    offenses = client.siem.get_siem_offenses(filter="status=OPEN", range_header="0-49")
+    offenses = client.siem.offenses.list(filter="status=OPEN", range_header="0-49")
 
     # Run an Ariel search
-    search = client.ariel.post_ariel_searches(
-        body={"query_expression": "SELECT * FROM events LAST 5 MINUTES"}
+    search = client.ariel.searches.create(
+        query_expression="SELECT * FROM events LAST 5 MINUTES"
     )
 
 Authentication
