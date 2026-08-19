@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
-    {name = "Your Name", email = "your.email@example.com"}
+    {name = "PyRadar Contributors"}
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -44,10 +44,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/qradar-sdk"
-Documentation = "https://github.com/yourusername/qradar-sdk#readme"
-Repository = "https://github.com/yourusername/qradar-sdk"
-Issues = "https://github.com/yourusername/qradar-sdk/issues"
+Homepage = "https://github.com/binhnguyen143/PyRadar"
+Documentation = "https://github.com/binhnguyen143/PyRadar#readme"
+Repository = "https://github.com/binhnguyen143/PyRadar"
+Issues = "https://github.com/binhnguyen143/PyRadar/issues"
 
 [tool.setuptools]
 packages = ["qradar_sdk", "qradar_sdk.api"]

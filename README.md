@@ -10,6 +10,31 @@ A Python SDK for the IBM QRadar REST API (version 26.0).
 pip install -e .
 ```
 
+### Install from a private GitHub repository
+
+The package can be installed directly from a private repository. Use an
+authenticated GitHub SSH remote (recommended):
+
+```bash
+pip install "git+ssh://git@github.com/binhnguyen143/PyRadar.git@master"
+```
+
+Or use HTTPS with a GitHub credential helper or a short-lived token:
+
+```bash
+pip install "git+https://github.com/binhnguyen143/PyRadar.git@master"
+```
+
+Pin a release tag or commit in production instead of `main`, for example:
+
+```bash
+pip install "git+ssh://git@github.com/binhnguyen143/PyRadar.git@v26.0.0"
+```
+
+The repository must contain `pyproject.toml` at its root. No package build or
+publish step is required for direct Git installation; pip builds the wheel
+locally and installs its declared dependencies.
+
 ### Install with development dependencies
 
 ```bash
