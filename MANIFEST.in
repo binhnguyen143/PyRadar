@@ -1,8 +1,6 @@
 # Include important files in source distributions
 include README.md
 include LICENSE
-include requirements.txt
-include requirements-dev.txt
 
 # Include type information
 include qradar_sdk/py.typed

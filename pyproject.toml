@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
-    {name = "PyRadar Contributors"}
+    {name = "Binh Nguyxn", email = "binhnd.dev@gmail.com"}
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
